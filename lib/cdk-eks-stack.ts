@@ -53,5 +53,17 @@ export class CdkEksStack extends cdk.Stack {
         eks.ClusterLoggingTypes.SCHEDULER,
       ],
     });
+
+    new cdk.CfnOutput(this, "ClusterArn", {
+      value: cluster.clusterArn,
+    });
+
+    new cdk.CfnOutput(this, "PrivateSubnets", {
+      value: vpc.privateSubnets.map((s) => s.subnetId).join(","),
+    });
+
+    new cdk.CfnOutput(this, "Sg", {
+      value: cluster.clusterSecurityGroup.securityGroupId,
+    });
   }
 }
