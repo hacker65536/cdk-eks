@@ -95,5 +95,9 @@ export class CdkEksCollect extends cdk.Stack {
       },
       */
     });
+
+    new cdk.CfnOutput(this, "WorkspaceArn", {
+      value: myaps.attrArn,
+    });
   }
 }
